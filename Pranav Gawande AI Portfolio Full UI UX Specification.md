@@ -8,7 +8,7 @@ Paste the whole document into your UI maker AI (v0, Lovable, Bolt, Figma AI, Gal
 
 ## 1. Product overview
 
-**What it is:** A single-page personal portfolio and resume website for **Pranav Gawande**, a Full-Stack Developer from Pune, Maharashtra, India (MCA student at Savitribai Phule Pune University, graduating 2027). Its signature idea is an **AI-first homepage**: instead of a classic hero, the visitor sees a big "Ask me anything" search bar that opens a chat with **Ved**, an AI assistant that answers questions about Pranav.
+**What it is:** A single-page personal portfolio and resume website for **Pranav Gawande**, a Full-Stack Developer from Pune, Maharashtra, India (Master in Computer Science student at G.H Raisoni international skill tech university, Pune, graduating 2027). Its signature idea is an **AI-first homepage**: instead of a classic hero, the visitor sees a big "Ask me anything" search bar that opens a chat with **Ved**, an AI assistant that answers questions about Pranav.
 
 **Audience:** Recruiters, hiring managers, clients, collaborators and researchers.
 
@@ -80,7 +80,7 @@ Vertical stack of sections, max-w-5xl.
    - **Badge Grid view:** 3-column grid of compact cards with icon, name, level badge, highlight text, and a footer row with years and "NN% Proficiency".
    - **Skills shown:** Python 95% Expert 4+ yrs; Java 90% Expert 3+; JavaScript 92% Expert 4+; SQL 89% Advanced 3+; React 18 94% Expert 3+; Node.js 91% Expert 3+; Docker 88% Advanced 3; AWS Cloud 86% Advanced 3. Each has a one-line specialization description.
 3. **Core Domain Stacks:** Three cards in a row, each with an uppercase blue title and a wrap of gray tag chips: **Core Stack** (Python, Java, JavaScript, React 18, Node.js, SQL, Docker, AWS Cloud), **Languages & Frameworks** (Python, Java, JavaScript, React 18, Node.js, SQL), **Cloud & Infrastructure** (Docker, AWS Cloud, SQL Database Systems).
-4. **Experience + Education:** Two cards side by side (stacked on mobile), each with an icon heading and divider. Entries show title, blue subtitle (company or institution), a period pill, and bullets (education also has a description). Experience: *Full-Stack Developer, Tech Solutions Inc., 2022 to Present* and *Web Developer & Open-Source Contributor, Independent Projects, 2021 to 2022*. Education: *BCA, College of Management and Computer Science, Yavatmal, June 2023 to May 2025* and *MCA, Savitribai Phule Pune University, Graduating 2027*.
+4. **Experience + Education:** Two cards side by side (stacked on mobile), each with an icon heading and divider. Entries show title, blue subtitle (company or institution), a period pill, and bullets (education also has a description). Experience: *Full-Stack Developer, Tech Solutions Inc., 2022 to Present* and *Web Developer & Open-Source Contributor, Independent Projects, 2021 to 2022*. Education: *Bachelor in Computer Science, Sant Gadge Baba Amravati University, Amravati, 2023 to 2025* and *Master in Computer Science, G.H Raisoni international skill tech university, Pune, Graduating 2027*.
 5. **Client & Collaborator Endorsements (Reviews):** see 4.8.
 6. **Verified Certifications** grid (4-up): shown only if certificates exist; currently the list is empty so the section is hidden. Card: date chip, title, issuer, up to 3 skill tags.
 

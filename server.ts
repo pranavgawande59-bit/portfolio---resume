@@ -17,8 +17,8 @@ Key Profile Details:
 - Title: Full-Stack Developer (Fresher)
 - Bio: Passionate Full-Stack Developer and motivated fresher with strong foundations in React, Node.js, Python, Java, and modern web architectures. Eager to engineer high-performance applications and contribute to real-world products.
 - Education: 
-  1. Bachelor of Computer Applications (BCA) from College Of Management and Computer Science, Yavatmal (June 2023 - May 2025) with strong CGPA academic distinction.
-  2. Master of Computer Applications (MCA) from Savitribai Phule Pune University (Graduating 2027). Specialization in Distributed Systems, Cloud Computing & Microservices Architecture (Top 5%).
+  1. Bachelor in Computer Science from Sant Gadge Baba Amravati University, Amravati (2023 - 2025).
+  2. Master in Computer Science from G.H Raisoni international skill tech university, Pune (Graduating 2027).
 - Core Skills: Python, Java, JavaScript/TypeScript, React 18, Node.js, SQL, Docker, AWS Cloud fundamentals, RESTful APIs.
 - Verified Certifications:
   1. Full-Stack Web Development Specialization (Meta / Coursera, 2024)
@@ -50,7 +50,7 @@ function getGroundedPortfolioReply(message: string): string {
 Welcome to Pranav Gawande's interactive portfolio! I can answer questions about:
 - **Skills & Tech Stack**: Core languages, frameworks, and cloud tools
 - **Work Experience**: Production full-stack and AI development roles
-- **Education**: BCA and MCA degrees with academic distinction
+- **Education**: Bachelor & Master in Computer Science
 - **Why Hire Pranav**: Key engineering strengths and differentiators
 - **Direct Contact**: Reach out at **pranavgawande59@gmail.com**
 
@@ -98,7 +98,7 @@ What would you like to know?`;
   ) {
     return `### Pranav's Career Focus & Practical Background
 
-Pranav is currently pursuing his **Master of Computer Applications (MCA)** at **Savitribai Phule Pune University (Top 5% Department Scholar)** and is actively seeking full-time **Full-Stack Developer**, **Backend**, or **Software Engineering** opportunities:
+Pranav is currently pursuing his **Master in Computer Science** at **G.H Raisoni international skill tech university, Pune (Graduating 2027)** and is actively seeking full-time **Full-Stack Developer**, **Backend**, or **Software Engineering** opportunities:
 
 - **Full-Stack Foundations**: Practical project engineering with **React 18**, **Node.js**, **Express**, **Python**, **Java**, and **SQL**.
 - **System Architecture**: Strong grasp of Data Structures, Object-Oriented Principles, Multithreading, and Relational Database Systems.
@@ -114,24 +114,18 @@ You can reach Pranav directly at **pranavgawande59@gmail.com** for hiring discus
     msg.includes('degree') ||
     msg.includes('college') ||
     msg.includes('university') ||
-    msg.includes('bca') ||
-    msg.includes('mca') ||
-    msg.includes('cgpa') ||
     msg.includes('study')
   ) {
-    return `### Academic Background & Distinction
+    return `### Academic Background
 
-- **Master of Computer Applications (MCA)**
-  * **Institution**: Savitribai Phule Pune University
+- **Master in Computer Science**
+  * **Institution**: G.H Raisoni international skill tech university, Pune
   * **Timeline**: Graduating 2027
-  * **Rank & Distinction**: Department Rank in **Top 5%**
-  * **Specialization**: Distributed Systems, Cloud Computing & Microservices Architecture
-  * **Thesis Research**: High-Throughput Distributed Microservices and Cloud Orchestration
+  * **Specialization**: Advanced Distributed Systems, Cloud Architectures & Software Engineering
 
-- **Bachelor of Computer Applications (BCA)**
-  * **Institution**: College Of Management and Computer Science, Yavatmal
-  * **Timeline**: June 2023 – May 2025
-  * **Distinction**: Cumulative CGPA Academic Distinction
+- **Bachelor in Computer Science**
+  * **Institution**: Sant Gadge Baba Amravati University, Amravati
+  * **Timeline**: 2023 – 2025
   * **Coursework**: Software Engineering, OOP, Data Structures, Relational Database Management Systems`;
   }
 
@@ -178,7 +172,7 @@ Pranav holds recognized industry and coursework certifications:
     return `### Why You Should Hire Pranav Gawande (Fresher)
 
 1. **Strong Full-Stack Foundation**: Solid hands-on knowledge spanning modern frontend (React 18), backend servers (Node.js, Express, Java, Python), and relational databases (SQL).
-2. **Academic Rigor & Fast Learner**: Top 5% MCA scholar at SPPU with BCA academic distinction, quick to absorb new codebases and industry best practices.
+2. **Academic Foundation & Fast Learner**: Computer Science graduate from SGBAU, currently pursuing Master in Computer Science at G.H Raisoni International Skill Tech University, quick to absorb new codebases and industry best practices.
 3. **Core CS & Algorithmic Fundamentals**: Deep grasp of Data Structures, OOP, multithreading, and software engineering principles.
 4. **Hands-On Practical Mindset**: Familiar with modern development tooling—Git workflows, Docker containerization, RESTful APIs, and responsive design.
 5. **High Energy & Growth Potential**: Highly motivated fresher ready to contribute immediately, collaborate effectively, and grow with the engineering team.`;
@@ -231,7 +225,7 @@ Interested in reviewing specific code repositories or technical demos? Contact P
 
 Pranav Gawande is a **Full-Stack Developer** based in Pune, India. He combines deep software engineering rigor with modern web and cloud technologies to create scalable, high-performance web applications.
 
-- **Current Pursuit**: MCA in Distributed Systems & Cloud Computing at Savitribai Phule Pune University (Top 5%).
+- **Current Pursuit**: Master in Computer Science at G.H Raisoni international skill tech university, Pune (Graduating 2027).
 - **Key Focus**: Production React/Next.js applications, robust Node.js/Java backends, Docker/AWS infrastructure, and scalable microservices.
 - **Contact**: [pranavgawande59@gmail.com](mailto:pranavgawande59@gmail.com)`;
   }

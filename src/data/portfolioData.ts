@@ -29,28 +29,28 @@ export const experienceData: ExperienceItem[] = [];
 export const educationData: EducationItem[] = [
   {
     id: 'edu-1',
-    degree: 'Bachelor of Computer Applications (BCA)',
-    institution: 'College Of Management and Computer Science, Yavatmal',
-    period: 'June 2023 - May 2025',
+    degree: 'Bachelor in Computer Science',
+    institution: 'Sant Gadge Baba Amravati University, Amravati',
+    period: '2023 – 2025',
     description:
-      'Comprehensive coursework in Software Engineering, Web Development, Object-Oriented Programming, Database Management Systems, and Data Structures with strong academic performance.',
+      'Core foundation in Computer Science, software engineering methodologies, data structures, algorithms, object-oriented programming, and relational database systems.',
     highlights: [
       'Core Computer Science & Software Engineering',
       'Database Management Systems & Object-Oriented Design',
-      'Cumulative CGPA Academic Distinction',
+      'Algorithms & Web Technologies',
     ],
   },
   {
     id: 'edu-2',
-    degree: 'Master of Computer Applications (MCA)',
-    institution: 'Savitribai Phule Pune University',
+    degree: 'Master in Computer Science',
+    institution: 'G.H Raisoni international skill tech university, Pune',
     period: 'Graduating 2027',
     description:
-      'Focusing on advanced distributed computing architectures, cloud infrastructure, and modern software engineering practices.',
+      'Advanced study in distributed systems, modern web architectures, cloud infrastructure, and scalable backend computing.',
     highlights: [
-      'Distributed Systems & Cloud Computing Specialization',
-      'Thesis: High-Throughput Distributed Microservices and Cloud Orchestration',
-      'Department Rank Top 5%',
+      'Distributed Systems & Cloud Computing',
+      'Advanced Software Engineering & Microservices',
+      'High-Performance Full-Stack Architectures',
     ],
   },
 ];

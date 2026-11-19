@@ -383,7 +383,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
                   </div>
                   <div className="flex items-start gap-2 text-xs text-[#64748b]">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <span><strong>Academic Distinction:</strong> Savitribai Phule Pune University MCA (Top 5%).</span>
+                    <span><strong>Academic Foundation:</strong> G.H Raisoni international skill tech university, Pune.</span>
                   </div>
                   <div className="flex items-start gap-2 text-xs text-[#64748b]">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
