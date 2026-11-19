@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu, X, Sparkles, ShieldCheck, Lock } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { TabType } from '../types';
 import { BrandLogo } from './BrandLogo';
 import { useOwnerAuth } from '../utils/ownerAuthHelper';
@@ -47,20 +48,27 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
 
         {/* Desktop Navigation Links (Centered) */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+        <div className="hidden md:flex items-center gap-1 text-sm font-medium">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => handleTabClick(item.id)}
-                className={`transition-colors cursor-pointer ${
+                className={`relative px-4 py-1.5 rounded-full transition-colors cursor-pointer ${
                   isActive
-                    ? 'text-[#0f172a] font-semibold'
+                    ? 'text-[#0284c7] font-semibold'
                     : 'text-[#64748b] hover:text-[#0f172a]'
                 }`}
               >
-                {item.label}
+                {isActive && (
+                  <motion.span
+                    layoutId="activeTabIndicator"
+                    className="absolute inset-0 bg-[#e0f2fe]/80 rounded-full -z-10 border border-[#bae6fd]/60"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span>{item.label}</span>
               </button>
             );
           })}
@@ -108,63 +116,71 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-gray-200 px-6 py-4 flex flex-col gap-2">
-          <button
-            onClick={() => handleTabClick('home')}
-            className={`text-left px-4 py-2.5 rounded-xl font-medium text-sm transition-colors ${
-              activeTab === 'home'
-                ? 'bg-[#0284c7]/10 text-[#0284c7] font-semibold'
-                : 'text-[#475569] hover:bg-gray-50'
-            }`}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="md:hidden bg-white border-b border-gray-200 px-6 py-4 flex flex-col gap-2 overflow-hidden"
           >
-            Home
-          </button>
-          {navItems.map((item) => (
             <button
-              key={item.id}
-              onClick={() => handleTabClick(item.id)}
+              onClick={() => handleTabClick('home')}
               className={`text-left px-4 py-2.5 rounded-xl font-medium text-sm transition-colors ${
-                activeTab === item.id
+                activeTab === 'home'
                   ? 'bg-[#0284c7]/10 text-[#0284c7] font-semibold'
                   : 'text-[#475569] hover:bg-gray-50'
               }`}
             >
-              {item.label}
+              Home
             </button>
-          ))}
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleTabClick(item.id)}
+                className={`text-left px-4 py-2.5 rounded-xl font-medium text-sm transition-colors ${
+                  activeTab === item.id
+                    ? 'bg-[#0284c7]/10 text-[#0284c7] font-semibold'
+                    : 'text-[#475569] hover:bg-gray-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
 
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenAiChat();
-            }}
-            className="mt-2 w-full bg-[#0284c7] hover:bg-[#0369a1] text-white py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors"
-          >
-            <Sparkles className="w-4 h-4" />
-            <span>Chat with Ved</span>
-          </button>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenOwnerSettings(isOwner ? 'edit-profile' : 'login');
-            }}
-            className="w-full border border-gray-200 text-gray-700 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-gray-50"
-          >
-            {isOwner ? (
-              <>
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Owner Dashboard &amp; Settings</span>
-              </>
-            ) : (
-              <>
-                <Lock className="w-3.5 h-3.5 text-gray-500" />
-                <span>Owner Login (Passcode)</span>
-              </>
-            )}
-          </button>
-        </div>
-      )}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenAiChat();
+              }}
+              className="mt-2 w-full bg-[#0284c7] hover:bg-[#0369a1] text-white py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-xs transition-colors"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>Chat with Ved</span>
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenOwnerSettings(isOwner ? 'edit-profile' : 'login');
+              }}
+              className="w-full border border-gray-200 text-gray-700 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-gray-50"
+            >
+              {isOwner ? (
+                <>
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Owner Dashboard &amp; Settings</span>
+                </>
+              ) : (
+                <>
+                  <Lock className="w-3.5 h-3.5 text-gray-500" />
+                  <span>Owner Login (Passcode)</span>
+                </>
+              )}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

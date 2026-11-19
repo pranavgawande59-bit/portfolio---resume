@@ -36,7 +36,7 @@ export interface TechnicalSkill {
   name: string;
   category: 'language' | 'framework' | 'ai-data' | 'cloud-devops';
   proficiency: number; // 0 to 100
-  level: 'Expert' | 'Advanced' | 'Proficient';
+  level: 'Expert' | 'Advanced' | 'Proficient' | 'Fresher' | 'fresher';
   experienceYears?: string;
   highlight?: string;
 }
@@ -75,6 +75,8 @@ export interface ProjectItem {
   techStack: string[];
   demoUrl?: string;
   githubUrl?: string;
+  imageUrl?: string;
+  sourceSnippet?: string;
   architectureHighlights: string[];
   featured?: boolean;
   status?: 'completed' | 'in-progress' | 'research';

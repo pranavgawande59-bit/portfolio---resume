@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import { profileData as initialProfileData } from '../data/portfolioData';
-import { UserProfile } from '../types';
+import { profileData as initialProfileData, projectsData as defaultProjectsData } from '../data/portfolioData';
+import { UserProfile, ProjectItem } from '../types';
 
 const OWNER_EMAIL = 'pranavgawande59@gmail.com';
 const OWNER_AUTH_STORAGE_KEY = 'pranav_portfolio_owner_session';
 const OWNER_PASSCODE_STORAGE_KEY = 'pranav_portfolio_passcode';
 const OWNER_PROFILE_STORAGE_KEY = 'pranav_portfolio_profile_custom';
+const OWNER_PROJECTS_STORAGE_KEY = 'pranav_portfolio_projects_custom';
 const OWNER_STATE_CHANGE_EVENT = 'pranav_owner_state_changed';
 
 // Default initial passcode if not yet configured
@@ -88,6 +89,9 @@ export function getCustomProfile(): UserProfile {
       if (parsed.tagline === 'Engineering Intelligent Systems.') {
         parsed.tagline = '';
       }
+      if (parsed.bio && !parsed.bio.includes('fresher') && parsed.bio.includes('specializing in scalable web technologies, robust microservices')) {
+        parsed.bio = initialProfileData.bio;
+      }
       return {
         ...initialProfileData,
         ...parsed,
@@ -121,13 +125,86 @@ export function resetCustomProfile(): void {
   }
 }
 
+export function getCustomProjects(): ProjectItem[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const saved = localStorage.getItem(OWNER_PROJECTS_STORAGE_KEY);
+    if (saved !== null) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) {
+        // If it contains the previous sample projects, purge them
+        const hasDummy = parsed.some((p: any) => p?.id === 'proj-prohub' || p?.id === 'proj-nexflow');
+        if (hasDummy) {
+          localStorage.removeItem(OWNER_PROJECTS_STORAGE_KEY);
+          return [];
+        }
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Error reading custom projects from localStorage:', e);
+  }
+  return defaultProjectsData || [];
+}
+
+export function saveCustomProjects(projects: ProjectItem[]): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(OWNER_PROJECTS_STORAGE_KEY, JSON.stringify(projects));
+    window.dispatchEvent(new Event(OWNER_STATE_CHANGE_EVENT));
+  } catch (e) {
+    console.error('Error saving custom projects:', e);
+  }
+}
+
+export function clearAllCustomProjects(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(OWNER_PROJECTS_STORAGE_KEY, JSON.stringify([]));
+    window.dispatchEvent(new Event(OWNER_STATE_CHANGE_EVENT));
+  } catch (e) {
+    console.error('Error clearing custom projects:', e);
+  }
+}
+
+export function addOrUpdateCustomProject(project: ProjectItem): void {
+  const current = getCustomProjects();
+  const exists = current.findIndex((p) => p.id === project.id);
+  let updated: ProjectItem[];
+  if (exists >= 0) {
+    updated = [...current];
+    updated[exists] = project;
+  } else {
+    updated = [project, ...current];
+  }
+  saveCustomProjects(updated);
+}
+
+export function deleteCustomProject(id: string): void {
+  const current = getCustomProjects();
+  const filtered = current.filter((p) => p.id !== id);
+  saveCustomProjects(filtered);
+}
+
+export function resetCustomProjects(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.removeItem(OWNER_PROJECTS_STORAGE_KEY);
+    window.dispatchEvent(new Event(OWNER_STATE_CHANGE_EVENT));
+  } catch (e) {
+    console.error('Error resetting custom projects:', e);
+  }
+}
+
 export function useOwnerAuth() {
   const [isOwner, setIsOwner] = useState<boolean>(isOwnerAuthenticated);
   const [profile, setProfile] = useState<UserProfile>(getCustomProfile);
+  const [projects, setProjects] = useState<ProjectItem[]>(getCustomProjects);
 
   const refresh = useCallback(() => {
     setIsOwner(isOwnerAuthenticated());
     setProfile(getCustomProfile());
+    setProjects(getCustomProjects());
   }, []);
 
   useEffect(() => {
@@ -145,10 +222,15 @@ export function useOwnerAuth() {
     isOwner,
     ownerEmail: OWNER_EMAIL,
     profile,
+    projects,
     login: (passcode: string, remember?: boolean) => loginOwner(passcode, remember),
     logout: logoutOwner,
     updateProfile: saveCustomProfile,
     resetProfile: resetCustomProfile,
+    addOrUpdateProject: addOrUpdateCustomProject,
+    deleteProject: deleteCustomProject,
+    resetProjects: resetCustomProjects,
+    clearAllProjects: clearAllCustomProjects,
     changePasscode: setStoredPasscode,
   };
 }

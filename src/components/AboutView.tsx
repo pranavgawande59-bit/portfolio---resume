@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Sparkles,
   Award,
+  BadgeCheck,
   BookOpen,
   Briefcase,
   Mail,
@@ -49,29 +50,6 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
   const languageSkills = technicalSkillsData.filter((s) => s.category === 'language');
   const frameworkSkills = technicalSkillsData.filter((s) => s.category === 'framework');
   const cloudDevopsSkills = technicalSkillsData.filter((s) => s.category === 'cloud-devops');
-
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'Expert':
-        return {
-          bg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-          dot: 'bg-emerald-500',
-          bar: 'from-[#0284c7] to-[#0ea5e9]',
-        };
-      case 'Advanced':
-        return {
-          bg: 'bg-sky-50 text-sky-700 border-sky-200',
-          dot: 'bg-sky-500',
-          bar: 'from-[#0284c7] to-[#38bdf8]',
-        };
-      default:
-        return {
-          bg: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-          dot: 'bg-indigo-500',
-          bar: 'from-[#6366f1] to-[#818cf8]',
-        };
-    }
-  };
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -140,37 +118,35 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
             <div className="flex items-center gap-2">
               <Code className="w-5 h-5 text-[#0284c7]" />
               <h2 className="text-xl sm:text-2xl font-bold text-[#0f172a]">
-                Technical Skills &amp; Proficiency
+                Technical Skills &amp; Stack
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-[#64748b]">
-              Benchmarked proficiency across programming languages, modern web frameworks, and cloud infrastructure.
+              Core technical capabilities across programming languages, modern web frameworks, and cloud infrastructure.
             </p>
           </div>
 
-          {/* View Mode Toggle (Progress Bar vs Badges) */}
+          {/* View Mode Toggle */}
           <div className="flex items-center self-start md:self-auto p-1 bg-gray-100 rounded-xl">
             <button
               onClick={() => setSkillViewMode('progress')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-                skillViewMode === 'progress'
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${skillViewMode === 'progress'
                   ? 'bg-white text-[#0f172a] shadow-xs'
                   : 'text-[#64748b] hover:text-[#0f172a]'
-              }`}
+                }`}
             >
               <Sliders className="w-3.5 h-3.5" />
-              <span>Progress Bars</span>
+              <span>Card View</span>
             </button>
             <button
               onClick={() => setSkillViewMode('badges')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-                skillViewMode === 'badges'
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${skillViewMode === 'badges'
                   ? 'bg-white text-[#0f172a] shadow-xs'
                   : 'text-[#64748b] hover:text-[#0f172a]'
-              }`}
+                }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>Badge Grid</span>
+              <span>Compact View</span>
             </button>
           </div>
         </div>
@@ -179,11 +155,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => setSelectedSkillCategory('all')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-              selectedSkillCategory === 'all'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${selectedSkillCategory === 'all'
                 ? 'bg-[#0f172a] text-white shadow-xs'
                 : 'bg-white border border-gray-200 text-[#64748b] hover:border-gray-300'
-            }`}
+              }`}
           >
             <span>All Skills</span>
             <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-white/20 text-current font-mono">
@@ -193,11 +168,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
 
           <button
             onClick={() => setSelectedSkillCategory('language')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-              selectedSkillCategory === 'language'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${selectedSkillCategory === 'language'
                 ? 'bg-[#0284c7] text-white shadow-xs'
                 : 'bg-white border border-gray-200 text-[#64748b] hover:border-gray-300'
-            }`}
+              }`}
           >
             <Terminal className="w-3 h-3" />
             <span>Languages</span>
@@ -208,11 +182,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
 
           <button
             onClick={() => setSelectedSkillCategory('framework')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-              selectedSkillCategory === 'framework'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${selectedSkillCategory === 'framework'
                 ? 'bg-[#0284c7] text-white shadow-xs'
                 : 'bg-white border border-gray-200 text-[#64748b] hover:border-gray-300'
-            }`}
+              }`}
           >
             <Code className="w-3 h-3" />
             <span>Frameworks</span>
@@ -223,11 +196,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
 
           <button
             onClick={() => setSelectedSkillCategory('cloud-devops')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
-              selectedSkillCategory === 'cloud-devops'
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${selectedSkillCategory === 'cloud-devops'
                 ? 'bg-[#0284c7] text-white shadow-xs'
                 : 'bg-white border border-gray-200 text-[#64748b] hover:border-gray-300'
-            }`}
+              }`}
           >
             <Cloud className="w-3 h-3" />
             <span>Cloud &amp; DevOps</span>
@@ -237,105 +209,81 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
           </button>
         </div>
 
-        {/* View 1: Progress Bar Visualization Layout */}
+        {/* View 1: Card View Layout */}
         {skillViewMode === 'progress' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {filteredSkills.map((skill) => {
-              const levelStyle = getLevelColor(skill.level);
-              return (
-                <div
-                  key={skill.name}
-                  className="bg-white border border-gray-200/90 rounded-2xl p-5 shadow-2xs hover:border-[#bae6fd] hover:shadow-xs transition-all space-y-3"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="p-1.5 rounded-lg bg-[#f0f9ff] text-[#0284c7]">
-                        {getCategoryIcon(skill.category)}
-                      </span>
-                      <div>
-                        <h3 className="text-sm font-bold text-[#0f172a] leading-tight">
-                          {skill.name}
-                        </h3>
-                        {skill.experienceYears && (
-                          <span className="text-[11px] text-[#64748b]">
-                            {skill.experienceYears} experience
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <span
-                        className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${levelStyle.bg}`}
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full ${levelStyle.dot}`} />
-                        {skill.level}
-                      </span>
-                      <span className="text-sm font-bold text-[#0f172a] font-mono">
-                        {skill.proficiency}%
-                      </span>
+            {filteredSkills.map((skill) => (
+              <div
+                key={skill.name}
+                className="bg-white border border-gray-200/90 rounded-2xl p-5 shadow-2xs hover:border-[#bae6fd] hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5">
+                    <span className="p-2 rounded-xl bg-[#f0f9ff] text-[#0284c7] border border-sky-100">
+                      {getCategoryIcon(skill.category)}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-tight">
+                        {skill.name}
+                      </h3>
+                      {skill.experienceYears && (
+                        <span className="text-xs text-[#64748b]">
+                          {skill.experienceYears}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Progress Track */}
-                  <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
-                    <div
-                      className={`h-full rounded-full bg-gradient-to-r ${levelStyle.bar} transition-all duration-700 ease-out`}
-                      style={{ width: `${skill.proficiency}%` }}
-                    />
-                  </div>
-
-                  {/* Highlight pill / description */}
-                  {skill.highlight && (
-                    <p className="text-[11px] text-[#64748b] leading-tight flex items-center gap-1 pt-0.5">
-                      <span className="text-[#0284c7] font-semibold">Specialization:</span>
-                      <span>{skill.highlight}</span>
-                    </p>
-                  )}
+                  <span className="text-[11px] font-semibold text-[#0284c7] bg-[#f0f9ff] px-2.5 py-1 rounded-lg border border-[#e0f2fe] capitalize">
+                    {skill.category === 'cloud-devops' ? 'Cloud & DevOps' : skill.category}
+                  </span>
                 </div>
-              );
-            })}
+
+                {skill.highlight && (
+                  <div className="pt-2.5 border-t border-gray-100 text-xs text-[#475569] leading-relaxed flex items-start gap-1.5">
+                    <span className="text-[#0284c7] font-semibold flex-shrink-0">Specialization:</span>
+                    <span>{skill.highlight}</span>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         )}
 
-        {/* View 2: Interactive Badge Matrix Layout */}
+        {/* View 2: Compact Matrix Layout */}
         {skillViewMode === 'badges' && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredSkills.map((skill) => {
-              const levelStyle = getLevelColor(skill.level);
-              return (
-                <div
-                  key={skill.name}
-                  className="bg-white border border-gray-200/90 rounded-2xl p-4 shadow-2xs hover:border-[#0284c7]/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="p-1.5 rounded-lg bg-[#f0f9ff] text-[#0284c7]">
-                        {getCategoryIcon(skill.category)}
-                      </span>
-                      <h3 className="text-sm font-bold text-[#0f172a]">{skill.name}</h3>
-                    </div>
-                    <span
-                      className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${levelStyle.bg}`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full ${levelStyle.dot}`} />
-                      {skill.level}
+            {filteredSkills.map((skill) => (
+              <div
+                key={skill.name}
+                className="bg-white border border-gray-200/90 rounded-2xl p-4 shadow-2xs hover:border-[#0284c7]/40 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="p-1.5 rounded-lg bg-[#f0f9ff] text-[#0284c7]">
+                      {getCategoryIcon(skill.category)}
                     </span>
+                    <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors">{skill.name}</h3>
                   </div>
-
-                  {skill.highlight && (
-                    <p className="text-xs text-[#64748b] leading-relaxed">
-                      {skill.highlight}
-                    </p>
-                  )}
-
-                  <div className="flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
-                    <span className="text-[#64748b]">{skill.experienceYears || 'Active Stack'}</span>
-                    <span className="font-bold text-[#0284c7] font-mono">{skill.proficiency}% Proficiency</span>
-                  </div>
+                  <span className="text-[10px] font-semibold text-[#0284c7] bg-[#f0f9ff] px-2 py-0.5 rounded border border-[#e0f2fe] capitalize">
+                    {skill.category === 'cloud-devops' ? 'Cloud' : skill.category}
+                  </span>
                 </div>
-              );
-            })}
+
+                {skill.highlight && (
+                  <p className="text-xs text-[#64748b] leading-relaxed">
+                    {skill.highlight}
+                  </p>
+                )}
+
+                <div className="flex items-center justify-between pt-2 border-t border-gray-100 text-xs">
+                  <span className="text-[#64748b]">{skill.experienceYears || 'Core Stack'}</span>
+                  <span className="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[10px] border border-emerald-200/60">
+                    Active
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -373,34 +321,90 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
 
       {/* Experience & Education */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Experience */}
-        <div className="bg-white border border-gray-200/90 rounded-2xl p-6 shadow-2xs space-y-6">
-          <div className="flex items-center gap-2 pb-2 border-b border-gray-100">
-            <Briefcase className="w-5 h-5 text-[#0284c7]" />
-            <h2 className="text-lg font-bold text-[#0f172a]">Experience</h2>
-          </div>
-
-          <div className="space-y-6">
-            {experienceData.map((exp) => (
-              <div key={exp.id} className="space-y-2">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="font-semibold text-sm text-[#0f172a]">{exp.role}</h3>
-                    <p className="text-xs text-[#0284c7] font-medium">{exp.company}</p>
-                  </div>
-                  <span className="text-xs text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full border border-gray-200">
-                    {exp.period}
-                  </span>
-                </div>
-                <ul className="text-xs text-[#64748b] list-disc list-inside space-y-1">
-                  {exp.description.map((desc, i) => (
-                    <li key={i}>{desc}</li>
-                  ))}
-                </ul>
+        {/* Experience & Opportunities */}
+        {experienceData.length > 0 ? (
+          <div className="bg-white border border-gray-200/90 rounded-2xl p-6 shadow-2xs space-y-6">
+            <div className="flex items-center justify-between pb-2 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-[#0284c7]" />
+                <h2 className="text-lg font-bold text-[#0f172a]">Experience &amp; Internships</h2>
               </div>
-            ))}
+              <span className="text-[11px] font-semibold text-[#0284c7] bg-[#f0f9ff] border border-[#bae6fd] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                Active Track
+              </span>
+            </div>
+
+            <div className="space-y-6">
+              {experienceData.map((exp) => (
+                <div key={exp.id} className="space-y-2">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-semibold text-sm text-[#0f172a]">{exp.role}</h3>
+                      <p className="text-xs text-[#0284c7] font-medium">{exp.company}</p>
+                    </div>
+                    <span className="text-xs text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full border border-gray-200">
+                      {exp.period}
+                    </span>
+                  </div>
+                  {exp.description && exp.description.length > 0 && (
+                    <ul className="text-xs text-[#64748b] list-disc list-inside space-y-1">
+                      {exp.description.map((desc, i) => (
+                        <li key={i}>{desc}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="bg-white border border-gray-200/90 rounded-2xl p-6 shadow-2xs space-y-5 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <Briefcase className="w-5 h-5 text-[#0284c7]" />
+                  <h2 className="text-lg font-bold text-[#0f172a]">Career &amp; Opportunities</h2>
+                </div>
+                <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Open for Roles
+                </span>
+              </div>
+
+              <div className="mt-4 space-y-3">
+                <p className="text-sm text-[#334155] leading-relaxed">
+                  Actively seeking full-time <strong>Full-Stack Developer</strong>, <strong>Backend</strong>, or <strong>Software Engineering</strong> roles. Ready to engineer reliable, high-performance applications.
+                </p>
+
+                <div className="space-y-2 pt-2">
+                  <div className="flex items-start gap-2 text-xs text-[#64748b]">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Technical Foundations:</strong> React 18, Node.js, Python, Java, SQL, and Docker.</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-xs text-[#64748b]">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Academic Distinction:</strong> Savitribai Phule Pune University MCA (Top 5%).</span>
+                  </div>
+                  <div className="flex items-start gap-2 text-xs text-[#64748b]">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <span><strong>Fast Learner:</strong> Rapid ramp-up on production codebases and distributed architectures.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+              <span className="text-xs text-[#64748b]">Pune, India / Open to Remote</span>
+              <button
+                onClick={onOpenHireMe}
+                className="px-3.5 py-1.5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-semibold shadow-xs transition-colors cursor-pointer flex items-center gap-1.5"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Contact / Hire Me</span>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Education */}
         <div className="bg-white border border-gray-200/90 rounded-2xl p-6 shadow-2xs space-y-6">
@@ -435,45 +439,77 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
         </div>
       </div>
 
-      {/* Client & Collaborator Reviews Section */}
-      <ReviewsSection onOpenHireMe={onOpenHireMe} />
-
-      {/* Certifications */}
+      {/* Verified Certifications & Credentials */}
       {certificatesData.length > 0 && (
-        <div>
-          <div className="flex items-center gap-2 mb-6">
-            <Award className="w-5 h-5 text-[#0284c7]" />
-            <h2 className="text-xl font-bold text-[#0f172a]">Verified Certifications</h2>
+        <div className="bg-white border border-gray-200/90 rounded-2xl p-6 shadow-2xs space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-3 border-b border-gray-100 gap-2">
+            <div className="flex items-center gap-2.5">
+              <span className="p-2 rounded-xl bg-sky-50 text-[#0284c7] border border-sky-100">
+                <BadgeCheck className="w-5 h-5" />
+              </span>
+              <div>
+                <h2 className="text-lg font-bold text-[#0f172a]">Verified Certifications &amp; Credentials</h2>
+                <p className="text-xs text-[#64748b]">Recognized software engineering and cloud credentials</p>
+              </div>
+            </div>
+            <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5 self-start sm:self-auto">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+              {certificatesData.length} Verified
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {certificatesData.map((cert) => (
               <div
                 key={cert.id}
-                className="bg-white border border-gray-200/90 rounded-2xl p-5 shadow-2xs flex flex-col justify-between"
+                className="bg-[#f8fafc]/90 border border-gray-200/90 hover:border-sky-300 hover:shadow-sm transition-all rounded-xl p-5 flex flex-col justify-between group"
               >
-                <div className="space-y-2">
-                  <span className="text-[10px] font-bold text-[#0284c7] uppercase tracking-wider bg-[#f0f9ff] px-2 py-0.5 rounded">
-                    {cert.issueDate}
-                  </span>
-                  <h3 className="text-sm font-semibold text-[#0f172a] leading-snug">
-                    {cert.title}
-                  </h3>
-                  <p className="text-xs text-[#64748b] font-medium">{cert.issuer}</p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-bold text-[#0284c7] uppercase tracking-wider bg-white border border-sky-100 px-2.5 py-0.5 rounded-md shadow-2xs">
+                      {cert.issueDate}
+                    </span>
+                    {cert.credentialId && (
+                      <span className="text-[10px] font-mono text-[#64748b] bg-white border border-gray-200/70 px-2 py-0.5 rounded">
+                        ID: {cert.credentialId}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors leading-snug">
+                      {cert.title}
+                    </h3>
+                    <p className="text-xs text-[#64748b] font-medium mt-1">{cert.issuer}</p>
+                  </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-gray-100 flex flex-wrap gap-1">
-                  {cert.skills.slice(0, 3).map((s) => (
-                    <span key={s} className="text-[10px] bg-gray-50 text-gray-600 px-2 py-0.5 rounded">
-                      {s}
-                    </span>
-                  ))}
+                <div className="mt-4 pt-3 border-t border-gray-200/70 flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex flex-wrap gap-1.5">
+                    {cert.skills.map((s) => (
+                      <span key={s} className="text-[10px] bg-white border border-gray-200 text-[#475569] font-medium px-2 py-0.5 rounded-md">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                  {cert.verifyUrl && (
+                    <a
+                      href={cert.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] text-[#0284c7] hover:text-[#0369a1] font-semibold flex items-center gap-1 hover:underline ml-auto"
+                    >
+                      Verify <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
       )}
+
+      {/* Client & Collaborator Reviews Section */}
+      <ReviewsSection onOpenHireMe={onOpenHireMe} />
     </div>
   );
 };

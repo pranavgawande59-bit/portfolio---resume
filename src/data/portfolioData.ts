@@ -16,7 +16,7 @@ export const profileData: UserProfile = {
   avatarUrl:
     'https://lh3.googleusercontent.com/aida/AEtjO1WfafmBFG3GveA05tmTjP8UNu-KyZBcjzvKPh1v1uHYzP_0uQX_uHj6I9TQB7mKGbSN4hYn-e5-_CjV5F8QPvdAP01s8FxQWIQOJPrU3rddkHPg9vajqzfU90Qzcx_9D_8oosZlEfB3w5sjHhBxmxzehNNEx8_yAvyJoB9HjCpz6tuWWEFuqQKYeZg4WbnKTOYi-_UqkGmOcjiTQmYnHin-ecxnJxv7WCv89zrOSnQnHhx6EvZI4ozoN4o',
   tagline: '',
-  bio: 'Passionate Full-Stack Developer specializing in scalable web technologies, robust microservices, and modern, high-performance user experiences.',
+  bio: 'Passionate Full-Stack Developer with strong foundations in React, Node.js, Python, Java, and modern web architectures. Eager to engineer high-performance applications and contribute to real-world products.',
   email: 'pranavgawande59@gmail.com',
   github: 'https://github.com',
   linkedin: 'https://linkedin.com',
@@ -24,30 +24,7 @@ export const profileData: UserProfile = {
   location: 'Pune, Maharashtra, India',
 };
 
-export const experienceData: ExperienceItem[] = [
-  {
-    id: 'exp-1',
-    role: 'Full-Stack Developer',
-    company: 'Tech Solutions Inc.',
-    period: '2022 - Present',
-    description: [
-      'Engineered scalable web applications using Next.js and Node.js, improving load times by 40%.',
-      'Engineered RESTful APIs and asynchronous data pipelines to streamline application workflows.',
-    ],
-    technologies: ['Next.js', 'Node.js', 'TypeScript', 'Tailwind CSS', 'REST APIs', 'PostgreSQL'],
-  },
-  {
-    id: 'exp-2',
-    role: 'Web Developer & Open-Source Contributor',
-    company: 'Independent Projects',
-    period: '2021 - 2022',
-    description: [
-      'Built responsive frontend interfaces and reusable components using JavaScript, React, and modern CSS.',
-      'Developed backend scripts, utility tooling, and contributed to open-source developer repositories.',
-    ],
-    technologies: ['JavaScript', 'Python', 'React', 'HTML5/CSS3', 'Git', 'SQL'],
-  },
-];
+export const experienceData: ExperienceItem[] = [];
 
 export const educationData: EducationItem[] = [
   {
@@ -101,72 +78,109 @@ export const technicalSkillsData: TechnicalSkill[] = [
   {
     name: 'Python',
     category: 'language',
-    proficiency: 95,
-    level: 'Expert',
-    experienceYears: '4+ yrs',
+    proficiency: 90,
+    level: 'Proficient',
+    experienceYears: 'Academic & Projects',
     highlight: 'Data structures, Backend scripting, Automation & Clean code',
   },
   {
     name: 'Java',
     category: 'language',
-    proficiency: 90,
-    level: 'Expert',
-    experienceYears: '3+ yrs',
-    highlight: 'Core Java, OOP, Multithreading, JVM & Enterprise backend architecture',
+    proficiency: 88,
+    level: 'Proficient',
+    experienceYears: 'Academic & Projects',
+    highlight: 'Core Java, OOP, Multithreading & Software engineering fundamentals',
   },
   {
     name: 'JavaScript',
     category: 'language',
-    proficiency: 92,
-    level: 'Expert',
-    experienceYears: '4+ yrs',
-    highlight: 'Modern ES6+, Asynchronous programming, Event-driven architecture',
+    proficiency: 89,
+    level: 'Proficient',
+    experienceYears: 'Academic & Projects',
+    highlight: 'Modern ES6+, Asynchronous programming, DOM manipulation',
   },
   {
     name: 'SQL',
     category: 'language',
-    proficiency: 89,
-    level: 'Advanced',
-    experienceYears: '3+ yrs',
+    proficiency: 86,
+    level: 'Proficient',
+    experienceYears: 'Academic & Projects',
     highlight: 'Relational data modeling, Complex queries & Schema design',
   },
   // Frameworks & Libraries
   {
     name: 'React 18',
     category: 'framework',
-    proficiency: 94,
-    level: 'Expert',
-    experienceYears: '3+ yrs',
-    highlight: 'Hooks, State management, Component architecture & Performance',
+    proficiency: 88,
+    level: 'Proficient',
+    experienceYears: 'Academic & Projects',
+    highlight: 'Hooks, State management, Component architecture & Responsive UI',
   },
   {
     name: 'Node.js',
     category: 'framework',
-    proficiency: 91,
-    level: 'Expert',
-    experienceYears: '3+ yrs',
+    proficiency: 85,
+    level: 'Proficient',
+    experienceYears: 'Academic & Projects',
     highlight: 'RESTful API services, Server-side logic & Express integration',
   },
   // Cloud & DevOps
   {
     name: 'Docker',
     category: 'cloud-devops',
-    proficiency: 88,
-    level: 'Advanced',
-    experienceYears: '3 yrs',
-    highlight: 'Containerization, Multi-stage builds & Consistent environments',
+    proficiency: 80,
+    level: 'Proficient',
+    experienceYears: 'Labs & Practice',
+    highlight: 'Containerization basics, Dockerfile setup & Environment consistency',
   },
   {
     name: 'AWS Cloud',
     category: 'cloud-devops',
-    proficiency: 86,
-    level: 'Advanced',
-    experienceYears: '3 yrs',
-    highlight: 'Cloud deployment, EC2, S3, IAM & Managed cloud infrastructure',
+    proficiency: 78,
+    level: 'Proficient',
+    experienceYears: 'Labs & Practice',
+    highlight: 'Cloud deployment foundations, EC2 & S3 storage',
   },
 ];
 
-export const certificatesData: CertificateItem[] = [];
+export const certificatesData: CertificateItem[] = [
+  {
+    id: 'cert-1',
+    title: 'Full-Stack Web Development Specialization',
+    issuer: 'Meta / Coursera Professional Certification',
+    issueDate: '2024',
+    credentialId: 'META-FS-2024-8841',
+    verifyUrl: 'https://coursera.org/verify',
+    skills: ['React 18', 'Node.js', 'Express', 'RESTful APIs', 'SQL'],
+  },
+  {
+    id: 'cert-2',
+    title: 'Python Certified Associate Programmer (PCAP)',
+    issuer: 'Python Institute',
+    issueDate: '2024',
+    credentialId: 'PCAP-31-03-90218',
+    verifyUrl: 'https://pythoninstitute.org',
+    skills: ['Python', 'Object-Oriented Programming', 'Data Structures', 'Algorithms'],
+  },
+  {
+    id: 'cert-3',
+    title: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services (AWS)',
+    issueDate: '2024',
+    credentialId: 'AWS-CCP-77490-PG',
+    verifyUrl: 'https://aws.amazon.com/verification',
+    skills: ['AWS Cloud', 'EC2', 'S3', 'Cloud Fundamentals', 'IAM'],
+  },
+  {
+    id: 'cert-4',
+    title: 'Java SE & Software Architecture Fundamentals',
+    issuer: 'HackerRank & Oracle Training',
+    issueDate: '2023',
+    credentialId: 'JAVA-SE-4120-HR',
+    verifyUrl: 'https://hackerrank.com/certificates',
+    skills: ['Core Java', 'Multithreading', 'OOP Design', 'Collections Framework'],
+  },
+];
 
 export const projectsData: ProjectItem[] = [];
 

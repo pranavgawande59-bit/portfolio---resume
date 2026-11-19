@@ -192,17 +192,19 @@ export const ResumeView: React.FC<ResumeViewProps> = ({
 
           {/* Quick Jump Navigation */}
           <div className="flex flex-col gap-1.5 text-sm font-medium">
-            <button
-              onClick={() => scrollToSection('experience')}
-              className={`flex items-center gap-3 p-3 rounded-2xl transition-all text-left cursor-pointer ${
-                activeSection === 'experience'
-                  ? 'bg-[#0284c7]/10 text-[#0284c7] font-semibold'
-                  : 'text-[#475569] hover:bg-gray-50'
-              }`}
-            >
-              <Briefcase className="w-4 h-4 flex-shrink-0" />
-              <span>Experience</span>
-            </button>
+            {experienceData.length > 0 && (
+              <button
+                onClick={() => scrollToSection('experience')}
+                className={`flex items-center gap-3 p-3 rounded-2xl transition-all text-left cursor-pointer ${
+                  activeSection === 'experience'
+                    ? 'bg-[#0284c7]/10 text-[#0284c7] font-semibold'
+                    : 'text-[#475569] hover:bg-gray-50'
+                }`}
+              >
+                <Briefcase className="w-4 h-4 flex-shrink-0" />
+                <span>Experience</span>
+              </button>
+            )}
 
             <button
               onClick={() => scrollToSection('education')}
@@ -269,63 +271,65 @@ export const ResumeView: React.FC<ResumeViewProps> = ({
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="scroll-mt-28">
-          <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-3">
-            <span className="text-[#0284c7] bg-[#e0f2fe] p-2 rounded-xl flex items-center justify-center">
-              <Briefcase className="w-5 h-5" />
-            </span>
-            <h3 className="text-2xl font-bold text-[#0f172a]">
-              Experience
-            </h3>
-          </div>
+        {experienceData.length > 0 && (
+          <section id="experience" className="scroll-mt-28">
+            <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-3">
+              <span className="text-[#0284c7] bg-[#e0f2fe] p-2 rounded-xl flex items-center justify-center">
+                <Briefcase className="w-5 h-5" />
+              </span>
+              <h3 className="text-2xl font-bold text-[#0f172a]">
+                Experience
+              </h3>
+            </div>
 
-          <div className="flex flex-col gap-5">
-            {experienceData.map((job) => (
-              <div
-                key={job.id}
-                className="bg-white p-6 lg:p-7 rounded-2xl border border-gray-200/90 hover:border-[#38bdf8] hover:shadow-md transition-all group"
-              >
-                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
-                  <div>
-                    <h4 className="text-lg font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors">
-                      {job.role}
-                    </h4>
-                    <span className="text-sm font-medium text-[#64748b] flex items-center gap-1.5 mt-1">
-                      <Building2 className="w-4 h-4 text-[#0284c7]" />
-                      {job.company}
+            <div className="flex flex-col gap-5">
+              {experienceData.map((job) => (
+                <div
+                  key={job.id}
+                  className="bg-white p-6 lg:p-7 rounded-2xl border border-gray-200/90 hover:border-[#38bdf8] hover:shadow-md transition-all group"
+                >
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
+                    <div>
+                      <h4 className="text-lg font-bold text-[#0f172a] group-hover:text-[#0284c7] transition-colors">
+                        {job.role}
+                      </h4>
+                      <span className="text-sm font-medium text-[#64748b] flex items-center gap-1.5 mt-1">
+                        <Building2 className="w-4 h-4 text-[#0284c7]" />
+                        {job.company}
+                      </span>
+                    </div>
+                    <span className="text-xs font-semibold text-[#475569] bg-gray-50 border border-gray-200 px-3 py-1 rounded-full w-fit flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {job.period}
                     </span>
                   </div>
-                  <span className="text-xs font-semibold text-[#475569] bg-gray-50 border border-gray-200 px-3 py-1 rounded-full w-fit flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {job.period}
-                  </span>
-                </div>
 
-                <ul className="text-sm text-[#475569] space-y-2 mb-4">
-                  {job.description.map((bullet, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <ChevronRight className="w-4 h-4 text-[#0284c7] mt-0.5 flex-shrink-0" />
-                      <span className="leading-relaxed">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {job.technologies && (
-                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-gray-100">
-                    {job.technologies.map((tech, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-[#f8fafc] text-[#334155] border border-gray-200/60"
-                      >
-                        {tech}
-                      </span>
+                  <ul className="text-sm text-[#475569] space-y-2 mb-4">
+                    {job.description.map((bullet, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <ChevronRight className="w-4 h-4 text-[#0284c7] mt-0.5 flex-shrink-0" />
+                        <span className="leading-relaxed">{bullet}</span>
+                      </li>
                     ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+                  </ul>
+
+                  {job.technologies && (
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-gray-100">
+                      {job.technologies.map((tech, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="text-[11px] font-medium px-2.5 py-0.5 rounded-md bg-[#f8fafc] text-[#334155] border border-gray-200/60"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Education Section */}
         <section id="education" className="scroll-mt-28">

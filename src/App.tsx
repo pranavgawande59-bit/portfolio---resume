@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { TabType } from './types';
 import { Navbar } from './components/Navbar';
 import { AiHomeView } from './components/AiHomeView';
@@ -62,27 +63,41 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-grow w-full flex flex-col justify-center">
-        {activeTab === 'home' && (
-          <AiHomeView onAskQuestion={handleAskQuestion} />
-        )}
-        {activeTab === 'about' && (
-          <AboutView
-            onOpenHireMe={() => setIsHireMeOpen(true)}
-            onOpenOwnerSettings={handleOpenOwnerSettings}
-          />
-        )}
-        {activeTab === 'projects' && <ProjectsView />}
-        {activeTab === 'research' && (
-          <ResearchView onOpenHireMe={() => setIsHireMeOpen(true)} />
-        )}
-        {activeTab === 'resume' && (
-          <ResumeView
-            onOpenPdfModal={() => setIsPdfModalOpen(true)}
-            onOpenOwnerSettings={handleOpenOwnerSettings}
-          />
-        )}
-        {activeTab === 'contact' && <ContactView />}
+      <main className="flex-grow w-full flex flex-col justify-center overflow-x-hidden">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{
+              duration: 0.24,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="w-full flex-grow flex flex-col"
+          >
+            {activeTab === 'home' && (
+              <AiHomeView onAskQuestion={handleAskQuestion} />
+            )}
+            {activeTab === 'about' && (
+              <AboutView
+                onOpenHireMe={() => setIsHireMeOpen(true)}
+                onOpenOwnerSettings={handleOpenOwnerSettings}
+              />
+            )}
+            {activeTab === 'projects' && <ProjectsView />}
+            {activeTab === 'research' && (
+              <ResearchView onOpenHireMe={() => setIsHireMeOpen(true)} />
+            )}
+            {activeTab === 'resume' && (
+              <ResumeView
+                onOpenPdfModal={() => setIsPdfModalOpen(true)}
+                onOpenOwnerSettings={handleOpenOwnerSettings}
+              />
+            )}
+            {activeTab === 'contact' && <ContactView />}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Footer */}

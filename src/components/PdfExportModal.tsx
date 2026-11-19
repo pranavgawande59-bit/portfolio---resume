@@ -179,33 +179,35 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
           )}
 
           {/* Professional Experience */}
-          <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-2xs space-y-3">
-            <div className="flex items-center gap-1.5 pb-2 border-b border-gray-100">
-              <Building2 className="w-4 h-4 text-[#0284c7]" />
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#0284c7]">
-                Professional Experience
-              </h4>
-            </div>
-            <div className="space-y-4 pt-1">
-              {experienceData.map((exp) => (
-                <div key={exp.id} className="text-xs sm:text-sm space-y-1.5">
-                  <div className="flex flex-col sm:flex-row sm:justify-between font-bold text-[#0f172a]">
-                    <span>
-                      {exp.role} &mdash; <span className="text-[#0284c7]">{exp.company}</span>
-                    </span>
-                    <span className="font-normal text-[#64748b] font-mono text-xs sm:text-right">
-                      {exp.period}
-                    </span>
+          {experienceData.length > 0 && (
+            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/80 shadow-2xs space-y-3">
+              <div className="flex items-center gap-1.5 pb-2 border-b border-gray-100">
+                <Building2 className="w-4 h-4 text-[#0284c7]" />
+                <h4 className="text-xs font-bold uppercase tracking-widest text-[#0284c7]">
+                  Professional Experience
+                </h4>
+              </div>
+              <div className="space-y-4 pt-1">
+                {experienceData.map((exp) => (
+                  <div key={exp.id} className="text-xs sm:text-sm space-y-1.5">
+                    <div className="flex flex-col sm:flex-row sm:justify-between font-bold text-[#0f172a]">
+                      <span>
+                        {exp.role} &mdash; <span className="text-[#0284c7]">{exp.company}</span>
+                      </span>
+                      <span className="font-normal text-[#64748b] font-mono text-xs sm:text-right">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <ul className="list-disc list-inside text-[#334155] space-y-1 pl-1 text-xs leading-relaxed">
+                      {exp.description.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="list-disc list-inside text-[#334155] space-y-1 pl-1 text-xs leading-relaxed">
-                    {exp.description.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

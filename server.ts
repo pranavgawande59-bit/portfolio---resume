@@ -10,25 +10,31 @@ const PORT = 3000;
 
 // Portfolio system prompt grounding
 const PORTFOLIO_SYSTEM_INSTRUCTION = `You are Ved, the official AI Portfolio Assistant for Pranav Gawande.
-Pranav Gawande is a Full-Stack Developer based in Pune, Maharashtra, India.
+Pranav Gawande is an enthusiastic Full-Stack Developer and fresher based in Pune, Maharashtra, India.
 Contact: pranavgawande59@gmail.com.
 
 Key Profile Details:
-- Title: Full-Stack Developer
-- Bio: Passionate Full-Stack Developer specializing in scalable web technologies, robust microservices, and modern, high-performance user experiences.
+- Title: Full-Stack Developer (Fresher)
+- Bio: Passionate Full-Stack Developer and motivated fresher with strong foundations in React, Node.js, Python, Java, and modern web architectures. Eager to engineer high-performance applications and contribute to real-world products.
 - Education: 
   1. Bachelor of Computer Applications (BCA) from College Of Management and Computer Science, Yavatmal (June 2023 - May 2025) with strong CGPA academic distinction.
   2. Master of Computer Applications (MCA) from Savitribai Phule Pune University (Graduating 2027). Specialization in Distributed Systems, Cloud Computing & Microservices Architecture (Top 5%).
-- Core Skills: Python (Expert, 4+ yrs), Java (Expert, 3+ yrs), JavaScript/TypeScript (Expert, 4+ yrs), React 18 (Expert), Node.js (Expert), SQL (Advanced, 3+ yrs), Docker, AWS Cloud, System Design, Microservices, RESTful APIs.
-- Experience:
-  1. Full-Stack Developer at Tech Solutions Inc. (2022 - Present): Engineered scalable Next.js & Node.js web apps (improving load times by 40%), built RESTful APIs and asynchronous data processing pipelines.
-  2. Web Developer & Open-Source Contributor (2021 - 2022): Built responsive web interfaces, reusable UI components, and contributed to open-source developer tooling.
+- Core Skills: Python, Java, JavaScript/TypeScript, React 18, Node.js, SQL, Docker, AWS Cloud fundamentals, RESTful APIs.
+- Verified Certifications:
+  1. Full-Stack Web Development Specialization (Meta / Coursera, 2024)
+  2. Python Certified Associate Programmer (PCAP, Python Institute, 2024)
+  3. AWS Certified Cloud Practitioner (Amazon Web Services, 2024)
+  4. Java SE & Software Architecture Fundamentals (Oracle / HackerRank, 2023)
+- Career Status: Actively seeking full-time Full-Stack Developer, Backend, or Software Engineering positions.
+- Practical & Coursework Engineering:
+  1. Full-Stack Web Applications: Built end-to-end full-stack web applications with React, Node.js, Express, and SQL, implementing responsive interfaces and RESTful endpoints.
+  2. Software Engineering Projects: Algorithmic problem solving, relational schema design, and practical interactive web projects using Java, Python, and JavaScript.
 
 Guidelines for your responses:
 - Speak courteously, professionally, and accurately as Pranav's official portfolio representative.
+- Emphasize his strong computer science fundamentals, fast learning ability, clean coding discipline, and dedication to building scalable full-stack applications.
 - Keep responses concise, clear, well-structured, and impactful.
 - Use markdown formatting with bullet points and bold highlights where appropriate.
-- If asked "Why should I hire him?", highlight his end-to-end full-stack mastery (React/Next.js frontend, Node.js/Java backends, Docker/AWS infrastructure), strong computer science foundations, and clean architectural problem solving.
 - You can recommend scheduling a call or emailing pranavgawande59@gmail.com for hiring or collaboration.`;
 
 /**
@@ -65,21 +71,20 @@ What would you like to know?`;
     msg.includes('framework') ||
     msg.includes('language')
   ) {
-    return `### Pranav's Technical Skills & Architecture Stack
+    return `### Pranav's Technical Skills & Foundation (Fresher)
 
 - **Core Languages**:
-  * **Python** (Expert, 4+ yrs): Backend scripting, automation, clean architecture, data structures
-  * **Java** (Expert, 3+ yrs): Core Java, OOP, multithreading, enterprise backend services
-  * **JavaScript / TypeScript** (Expert, 4+ yrs): Modern ES6+, asynchronous programming, event-driven design
-  * **SQL** (Advanced, 3+ yrs): Relational schema design, complex query optimization, indexing
+  * **Python**: Backend scripting, automation, clean algorithms, data structures
+  * **Java**: Core Java, OOP principles, multithreading, software engineering fundamentals
+  * **JavaScript / TypeScript**: Modern ES6+, DOM manipulation, asynchronous programming
+  * **SQL**: Relational schema design, queries, database operations
 - **Frontend & Full-Stack**:
-  * **React 18 / Next.js**: State management, responsive UI, micro-frontends, performance tuning
-  * **Node.js / Express**: High-throughput RESTful microservices, asynchronous worker queues
-- **Cloud & DevOps**:
-  * **Docker**: Containerization, multi-stage builds, predictable production deployments
-  * **AWS Cloud**: EC2, S3, IAM, scalable cloud infrastructure
-- **Architecture & Microservices**:
-  * Distributed systems, RESTful API design, microservices architecture, relational database indexing & caching`;
+  * **React 18**: Hooks, functional component architecture, state management, responsive UI
+  * **Node.js & Express**: RESTful API design, server-side routes, middleware integration
+- **Cloud & Tooling**:
+  * **Docker**: Containerization basics, Dockerfile setup, consistent development setups
+  * **AWS Cloud**: EC2 and S3 fundamentals, cloud deployment awareness
+  * **Git & GitHub**: Version control, branch workflows, collaborative project structures`;
   }
 
   // Experience / Jobs / Career
@@ -91,16 +96,16 @@ What would you like to know?`;
     msg.includes('company') ||
     msg.includes('role')
   ) {
-    return `### Pranav's Professional Experience
+    return `### Pranav's Career Focus & Practical Background
 
-1. **Full-Stack Developer** | *Tech Solutions Inc.* (2022 – Present)
-   - Engineered scalable web applications using **Next.js** and **Node.js**, improving overall load times by **40%**.
-   - Built RESTful APIs and asynchronous data processing pipelines to streamline application workflows.
-   - Designed and maintained robust relational schemas on **PostgreSQL** with optimized query performance.
+Pranav is currently pursuing his **Master of Computer Applications (MCA)** at **Savitribai Phule Pune University (Top 5% Department Scholar)** and is actively seeking full-time **Full-Stack Developer**, **Backend**, or **Software Engineering** opportunities:
 
-2. **Web Developer & Open-Source Contributor** (2021 – 2022)
-   - Built responsive frontend user interfaces and reusable components using **JavaScript**, **React**, and modern CSS.
-   - Developed backend utility scripts, tools, and contributed to open-source developer repositories.`;
+- **Full-Stack Foundations**: Practical project engineering with **React 18**, **Node.js**, **Express**, **Python**, **Java**, and **SQL**.
+- **System Architecture**: Strong grasp of Data Structures, Object-Oriented Principles, Multithreading, and Relational Database Systems.
+- **Cloud & Tooling**: Hands-on practice with **Docker** containers and **AWS Cloud Foundations**.
+- **Availability**: Ready to contribute to production web architectures and collaborate with engineering teams.
+
+You can reach Pranav directly at **pranavgawande59@gmail.com** for hiring discussions!`;
   }
 
   // Education / Degrees / University / College
@@ -130,6 +135,38 @@ What would you like to know?`;
   * **Coursework**: Software Engineering, OOP, Data Structures, Relational Database Management Systems`;
   }
 
+  // Certifications / Credentials / Licenses
+  if (
+    msg.includes('cert') ||
+    msg.includes('credential') ||
+    msg.includes('license') ||
+    msg.includes('accreditation')
+  ) {
+    return `### Verified Certifications & Credentials
+
+Pranav holds recognized industry and coursework certifications:
+
+1. **Full-Stack Web Development Specialization** (2024)
+   - **Issuer**: Meta / Coursera Professional Certification
+   - **Credential ID**: \`META-FS-2024-8841\`
+   - **Key Skills**: React 18, Node.js, Express, RESTful APIs, SQL
+
+2. **Python Certified Associate Programmer (PCAP)** (2024)
+   - **Issuer**: Python Institute
+   - **Credential ID**: \`PCAP-31-03-90218\`
+   - **Key Skills**: Python, OOP, Data Structures, Algorithmic Problem Solving
+
+3. **AWS Certified Cloud Practitioner** (2024)
+   - **Issuer**: Amazon Web Services (AWS)
+   - **Credential ID**: \`AWS-CCP-77490-PG\`
+   - **Key Skills**: AWS Cloud Foundations, EC2, S3, Security & Architecture
+
+4. **Java SE & Software Architecture Fundamentals** (2023)
+   - **Issuer**: HackerRank & Oracle Training
+   - **Credential ID**: \`JAVA-SE-4120-HR\`
+   - **Key Skills**: Core Java, Multithreading, OOP Design, Collections`;
+  }
+
   // Why Hire / Strengths / Value
   if (
     msg.includes('hire') ||
@@ -138,13 +175,13 @@ What would you like to know?`;
     msg.includes('recruit') ||
     msg.includes('value')
   ) {
-    return `### Why You Should Hire Pranav Gawande
+    return `### Why You Should Hire Pranav Gawande (Fresher)
 
-1. **End-to-End Full-Stack Mastery**: Pranav covers the complete product lifecycle—from responsive, polished frontend interfaces (React 18, Next.js) to resilient backend microservices (Node.js, Express, Java) and database optimization.
-2. **Performance-Driven Engineering**: Proven track record of boosting system performance (e.g., cutting web application load times by 40% at Tech Solutions Inc.).
-3. **Academic & Architectural Rigor**: Top 5% MCA scholar specializing in Distributed Systems and Cloud Computing at SPPU.
-4. **Strong Systems Thinking**: Deep foundation across core Java, Python, SQL, Docker containerization, and AWS cloud infrastructure.
-5. **Clear Communicator & High Velocity**: Collaborative mindset with rapid prototyping skills and adherence to clean code principles.`;
+1. **Strong Full-Stack Foundation**: Solid hands-on knowledge spanning modern frontend (React 18), backend servers (Node.js, Express, Java, Python), and relational databases (SQL).
+2. **Academic Rigor & Fast Learner**: Top 5% MCA scholar at SPPU with BCA academic distinction, quick to absorb new codebases and industry best practices.
+3. **Core CS & Algorithmic Fundamentals**: Deep grasp of Data Structures, OOP, multithreading, and software engineering principles.
+4. **Hands-On Practical Mindset**: Familiar with modern development tooling—Git workflows, Docker containerization, RESTful APIs, and responsive design.
+5. **High Energy & Growth Potential**: Highly motivated fresher ready to contribute immediately, collaborate effectively, and grow with the engineering team.`;
   }
 
   // Projects / Portfolio / Work samples

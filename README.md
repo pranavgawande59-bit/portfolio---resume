@@ -1,12 +1,46 @@
-# Pranav Gawande — Full-Stack Developer Portfolio
+# Pranav Gawande — AI Architect & Full-Stack Developer Portfolio
 
-A high-performance full-stack web portfolio showcasing full-stack engineering, distributed systems, modern web architectures, and an interactive AI portfolio assistant. Built with **React 18**, **TypeScript**, **Tailwind CSS**, and an **Express.js** backend powered by the **Google GenAI SDK**.
+[![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js)](https://nodejs.org)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
+[![Google GenAI](https://img.shields.io/badge/Gemini-3.8--Flash-4285F4?logo=google)](https://ai.google.dev)
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)]()
+
+A high-performance full-stack web portfolio and interactive digital resume showcasing software engineering rigor, distributed systems architectures, and an embedded conversational AI agent (**"Ved"**). Built with **React 18**, **TypeScript**, **Tailwind CSS**, and an **Express.js** backend powered by the **Google GenAI SDK** (`gemini-3.8-flash`) with resilient multi-model and deterministic grounded fallback engines.
 
 ---
 
-## 1. System Architecture & Backend Logic
+## 📑 System Documentation Index
 
-The application follows a full-stack architecture where backend services run via an Express server (`server.ts`) and the frontend client is served using Vite in development and static assets in production.
+The repository includes a comprehensive, production-grade documentation suite:
+
+| Document | Description |
+| :--- | :--- |
+| **[PRD.md](file:///d:/project/pranav-gawande---ai-architect-portfolio-&-resume/PRD.md)** | Product Requirements Document: Target personas, user stories, functional & non-functional requirements. |
+| **[DESIGN.md](file:///d:/project/pranav-gawande---ai-architect-portfolio-&-resume/DESIGN.md)** | UI/UX & Design System: Color tokens, typography, motion curves, component specs, and responsive grid. |
+| **[ARCHITECTURE.md](file:///d:/project/pranav-gawande---ai-architect-portfolio-&-resume/ARCHITECTURE.md)** | Full-Stack Architecture: C4 diagrams, Vite dev middleware vs production, event-driven state sync pipeline. |
+| **[DATABASE.md](file:///d:/project/pranav-gawande---ai-architect-portfolio-&-resume/DATABASE.md)** | Data Architecture: Schemas (`UserProfile`, `ProjectItem`, etc.), storage map, and cache lifecycle. |
+| **[API.md](file:///d:/project/pranav-gawande---ai-architect-portfolio-&-resume/API.md)** | REST API Reference: Specifications for `POST /api/chat`, `POST /api/newsletter/subscribe`, and static routes. |
+| **[AGENTS.md](file:///d:/project/pranav-gawande---ai-architect-portfolio-&-resume/AGENTS.md)** | AI Agent Blueprint: "Ved" persona, system instruction, multi-model cascade, and grounded fallback engine. |
+
+---
+
+## 1. Key Features
+
+- 🤖 **Interactive AI Assistant ("Ved"):** Built-in chat drawer ready to answer technical queries, education, certifications, and career questions.
+- ⚡ **Zero-Downtime Multi-Model Resilience:** Automatically waterfalls from `gemini-3.8-flash` to `gemini-3.1-flash-lite`, and falls back to a deterministic grounded knowledge engine during 503 high-demand spikes.
+- 🏆 **Verified Certifications & Credentials:** Highlighted credentials (Meta Full-Stack, Python PCAP, AWS Cloud Foundations, Java SE) with verifiable credential IDs and direct verification links.
+- 💼 **Active Career & Opportunities Center:** Clean opportunity status card highlighting core competencies and facilitating direct recruiter outreach with zero artificial filler data.
+- 📄 **ATS-Friendly Resume & PDF Export:** Configurable sections, skill breakdowns, and one-click PDF generation.
+- 🚀 **Projects Hub with Dynamic Nodes:** Categorized software projects with architecture highlights, source snippets, and live demo links.
+- 🔒 **Owner Mode & Admin Isolation:** Fully separated administrative layer allowing the portfolio owner to update profiles, headshots, and projects directly with zero exposure to public visitors.
+- 📬 **Research & Newsletter Subscription:** Captures subscriber emails for distributed systems preprints and project updates with duplicate protection.
+- 🎨 **Minimalist Design & Motion:** Fluid view transitions via `motion/react`, responsive mobile navigation, and modern typography.
+
+---
+
+## 2. System Architecture
 
 ```
 ┌────────────────────────────────────────────────────────┐
@@ -20,7 +54,7 @@ The application follows a full-stack architecture where backend services run via
 ┌───────────────▼────────────────────────┴───────────────┐
 │              Full-Stack Express Server                 │
 │                      (server.ts)                       │
-│  - POST /api/chat (Resilient AI & Grounded Engine)    │
+│  - POST /api/chat (Resilient AI & Grounded Engine)     │
 │  - POST /api/newsletter/subscribe (Updates & Email)    │
 │  - Vite Dev Middleware / Production Static Servicing   │
 └───────────────────────┬────────────────────────────────┘
@@ -30,39 +64,62 @@ The application follows a full-stack architecture where backend services run via
       (gemini-3.8-flash with multi-model fallback)
 ```
 
-### Backend Endpoints (`server.ts`)
+---
 
-#### 1. `POST /api/chat`
-* **Purpose**: Powers **Ved**, the official AI portfolio representative.
-* **Model**: Uses `gemini-3.8-flash` as primary model with automated candidate fallback (`gemini-flash-latest`, `gemini-3.1-flash-lite`).
-* **Multi-Model Fallback & High-Demand Handling**:
-  - Automatically recovers from upstream `503 Service Unavailable` ("model is currently experiencing high demand") or `429` rate spikes.
-  - If external AI services are unreachable or temporarily congested, the backend instantly falls back to a deterministic, grounded portfolio knowledge base (`getGroundedPortfolioReply()`).
-  - Returns HTTP `200` with clean JSON (`{ reply: string, source: "ai" | "grounded-fallback" }`), ensuring visitors never see server crashes or error alerts.
-* **Security**: The `GEMINI_API_KEY` is kept strictly server-side in `process.env.GEMINI_API_KEY` and is never exposed to the client or browser bundle.
+## 3. Quick Start & Setup
 
-#### 2. `POST /api/newsletter/subscribe`
-* **Purpose**: Captures emails for research preprints, system design publications, and project releases.
-* **Payload**:
-  ```json
-  {
-    "name": "Visitor Name",
-    "email": "user@example.com",
-    "topics": ["open-source", "research", "system-design"],
-    "timestamp": "2026-09-08T22:00:00.000Z"
-  }
-  ```
-* **Validation & Deduplication**: Validates email format, normalizes to lowercase, de-duplicates subscribers in-memory, and returns `{ success: true, subscriberCount: N }`.
+### Prerequisites
+- **Node.js**: v18.0.0 or higher
+- **npm** or **bun** package manager
 
-#### 3. Production Asset Serving & SPA Fallback
-* In development (`NODE_ENV !== 'production'`), mounts Vite dev middleware (`createViteServer({ server: { middlewareMode: true }, appType: 'spa' })`).
-* In production, serves optimized static assets from `dist/` with wildcard SPA routing (`app.get('*')` to `dist/index.html`).
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/pranavgawande/portfolio.git
+cd pranav-gawande---ai-architect-portfolio-&-resume
+
+# Install dependencies
+npm install
+```
+
+### Environment Configuration
+Copy `.env.example` to `.env` and provide your Google Gemini API key:
+```env
+# Google GenAI API Key (Kept strictly on the backend server)
+GEMINI_API_KEY="your-gemini-api-key-here"
+
+# Application URL
+APP_URL="http://localhost:3000"
+```
+*(Note: If `GEMINI_API_KEY` is not provided, the server seamlessly runs using the deterministic grounded knowledge base without errors!)*
+
+### Running the Application
+```bash
+# Start Development Server (Express + Vite Middleware on Port 3000)
+npm run dev
+
+# Or run via Windows batch shortcut
+.\run.bat
+```
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## 2. Owner & Admin Credentials
+## 4. Available Scripts
 
-The application provides an administrative mode that allows the portfolio owner to edit profile information, change headshots, and manage settings directly on the site.
+| Script | Command | Description |
+| :--- | :--- | :--- |
+| **Development** | `npm run dev` | Starts Express server with hot-reloading Vite middleware on port 3000 |
+| **Lint / Typecheck** | `npm run lint` | Runs `tsc --noEmit` across all TypeScript files |
+| **Production Build** | `npm run build` | Bundles client with Vite and server with esbuild into `dist/` |
+| **Production Start** | `npm start` | Launches compiled production server (`dist/server.cjs`) |
+| **Clean** | `npm run clean` | Deletes build artifacts in `dist/` |
+
+---
+
+## 5. Owner Mode & Admin Authentication
+
+The platform allows Pranav Gawande to edit live profile information and add project nodes:
 
 | Parameter | Configuration / Value |
 | :--- | :--- |
@@ -72,78 +129,28 @@ The application provides an administrative mode that allows the portfolio owner 
 | **Passcode Key (Storage)** | `pranav_portfolio_passcode` |
 | **Profile Overrides Key** | `pranav_portfolio_profile_custom` |
 
-### How to Authenticate as Owner:
-1. Scroll to the footer or open the navigation bar.
-2. Click the small lock icon labeled **"Owner Access"**.
-3. In the authentication modal, enter the passcode:
-   ```
-   pranav2027
-   ```
+### How to Authenticate:
+1. Scroll to the footer or open the navbar.
+2. Click the lock icon labeled **"Owner Access"**.
+3. Enter the passcode: `pranav2027`.
 4. Click **"Unlock Owner Mode"**.
-5. Once authenticated, the **Owner Mode Active** banner appears at the top, unlocking live in-app profile editing, headshot replacement, and passcode management.
+5. Once unlocked, the **Owner Mode Active** banner appears at the top, enabling live in-app profile edits, headshot changes, and project creation.
+6. Public visitors can never see edit controls or admin components.
 
 ---
 
-## 3. Strict Admin Privacy & Public User Isolation
-
-> **Critical Security & Privacy Guarantee**: Regular visitors and public users **CANNOT** see admin details, credentials, or editing interfaces.
-
-### How Public Users Are Restricted:
-1. **Component-Level Conditional Rendering**:
-   - The top banner (`OwnerModeBanner`) returns `null` immediately whenever `isOwner` is false:
-     ```tsx
-     if (!isOwner) return null;
-     ```
-   - Regular visitors see no administrative banners, toolbar buttons, edit badges, or control controls.
-2. **Hidden Profile Edit Controls**:
-   - In `AboutView`, `ResumeView`, and `Navbar`, all "Edit Profile", "Upload Photo", and "Settings" buttons are wrapped in `{isOwner && (...) }`.
-   - Normal visitors only see clean, static presentation cards and cannot trigger editing state.
-3. **No Passcode Exposure**:
-   - Passcodes and authentication tokens are never rendered in public HTML or delivered in public API payloads.
-   - Client-side state defaults strictly to `isOwner: false` until a user explicitly inputs the valid passcode.
-4. **Session Isolation**:
-   - Owner authentication is bound to `sessionStorage` / `localStorage` under a unique token (`authenticated_owner_pranavgawande59@gmail.com`).
-   - Visitors on other machines or incognito sessions start as unauthenticated guests with zero edit rights.
-5. **Lockout & Logout**:
-   - Clicking **"Lock"** in the top banner instantly clears stored session keys, notifies all active components via custom DOM events, and restores read-only mode.
-
----
-
-## 4. Environment Variables
-
-Create a `.env` file in the root directory (refer to `.env.example`):
-
-```env
-# GEMINI_API_KEY: Secret API key for Google GenAI services (kept strictly server-side)
-GEMINI_API_KEY="your-gemini-api-key-here"
-
-# APP_URL: The base URL where this applet is hosted
-APP_URL="http://localhost:3000"
-```
-
----
-
-## 5. Available Scripts & Commands
+## 6. Testing & Quality Assurance
 
 ```bash
-# Start development server (boots Express server with Vite middleware on port 3000)
-npm run dev
-
-# Run TypeScript type check and linter
+# Run TypeScript compilation check
 npm run lint
 
-# Build full-stack application (client bundle + bundled CJS server for production)
+# Build full-stack application for production verification
 npm run build
-
-# Start production server
-npm start
 ```
 
 ---
 
-## 6. Technology Stack Summary
+## 7. License
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS, Lucide Icons, Canvas Confetti
-- **Backend**: Node.js, Express, tsx, esbuild
-- **AI / LLM Integration**: `@google/genai` (Gemini 3.8 Flash)
-- **Deployment**: Production containerized deployment on port 3000
+MIT License © 2026 Pranav Gawande. All rights reserved.
