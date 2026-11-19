@@ -425,8 +425,10 @@ export const AboutView: React.FC<AboutViewProps> = ({ onOpenHireMe, onOpenOwnerS
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-xs text-[#64748b]">{edu.description}</p>
-                {edu.highlights && (
+                {edu.description && (
+                  <p className="text-xs text-[#64748b]">{edu.description}</p>
+                )}
+                {edu.highlights && edu.highlights.length > 0 && (
                   <ul className="text-xs text-[#64748b] list-disc list-inside space-y-1">
                     {edu.highlights.map((h, i) => (
                       <li key={i}>{h}</li>

@@ -32,26 +32,12 @@ export const educationData: EducationItem[] = [
     degree: 'Bachelor in Computer Science',
     institution: 'Sant Gadge Baba Amravati University, Amravati',
     period: '2023 – 2025',
-    description:
-      'Core foundation in Computer Science, software engineering methodologies, data structures, algorithms, object-oriented programming, and relational database systems.',
-    highlights: [
-      'Core Computer Science & Software Engineering',
-      'Database Management Systems & Object-Oriented Design',
-      'Algorithms & Web Technologies',
-    ],
   },
   {
     id: 'edu-2',
     degree: 'Master in Computer Science',
     institution: 'G.H Raisoni international skill tech university, Pune',
-    period: 'Graduating 2027',
-    description:
-      'Advanced study in distributed systems, modern web architectures, cloud infrastructure, and scalable backend computing.',
-    highlights: [
-      'Distributed Systems & Cloud Computing',
-      'Advanced Software Engineering & Microservices',
-      'High-Performance Full-Stack Architectures',
-    ],
+    period: '2027',
   },
 ];
 

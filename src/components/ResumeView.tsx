@@ -361,11 +361,13 @@ export const ResumeView: React.FC<ResumeViewProps> = ({
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-sm text-[#475569] leading-relaxed">
-                  {edu.description}
-                </p>
+                {edu.description && (
+                  <p className="text-sm text-[#475569] leading-relaxed">
+                    {edu.description}
+                  </p>
+                )}
 
-                {edu.highlights && (
+                {edu.highlights && edu.highlights.length > 0 && (
                   <div className="mt-4 pt-3 border-t border-gray-100 flex flex-wrap gap-2">
                     {edu.highlights.map((item, hIdx) => (
                       <span

@@ -119,7 +119,9 @@ export const PdfExportModal: React.FC<PdfExportModalProps> = ({ isOpen, onClose 
                     <span className="font-normal text-[#64748b] font-mono">{edu.period}</span>
                   </div>
                   <div className="text-xs text-[#0284c7] font-semibold mt-0.5">{edu.institution}</div>
-                  <p className="text-xs text-[#475569] mt-1 leading-relaxed">{edu.description}</p>
+                  {edu.description && (
+                    <p className="text-xs text-[#475569] mt-1 leading-relaxed">{edu.description}</p>
+                  )}
                 </div>
               ))}
             </div>

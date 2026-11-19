@@ -22,7 +22,7 @@ export interface EducationItem {
   degree: string;
   institution: string;
   period: string;
-  description: string;
+  description?: string;
   highlights?: string[];
 }
 

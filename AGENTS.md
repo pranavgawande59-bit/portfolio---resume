@@ -43,7 +43,7 @@ Key Profile Details:
 - Bio: Passionate Full-Stack Developer and motivated fresher with strong foundations in React, Node.js, Python, Java, and modern web architectures. Eager to engineer high-performance applications and contribute to real-world products.
 - Education: 
   1. Bachelor in Computer Science from Sant Gadge Baba Amravati University, Amravati (2023 - 2025).
-  2. Master in Computer Science from G.H Raisoni international skill tech university, Pune (Graduating 2027).
+  2. Master in Computer Science from G.H Raisoni international skill tech university, Pune (2027).
 - Core Skills: Python, Java, JavaScript/TypeScript, React 18, Node.js, SQL, Docker, AWS Cloud fundamentals, RESTful APIs.
 - Verified Certifications:
   1. Full-Stack Web Development Specialization (Meta / Coursera, 2024)
