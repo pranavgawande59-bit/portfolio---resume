@@ -22,7 +22,7 @@
 }
 
 @media print {
-  nav, footer, .no-print, button:not(.print-allow) {
+  nav, footer, aside, .no-print, button:not(.print-allow) {
     display: none !important;
   }
   
@@ -30,6 +30,7 @@
     background: white !important;
     color: black !important;
     padding-top: 0 !important;
+    margin: 0 !important;
   }
 
   main {
@@ -38,11 +39,81 @@
     margin: 0 !important;
   }
 
-  aside {
+  .print-full-width {
+    width: 100% !important;
+  }
+
+  /* When ATS PDF Resume Modal is Open during Print */
+  body.pdf-modal-open {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+  }
+
+  body.pdf-modal-open main,
+  body.pdf-modal-open nav,
+  body.pdf-modal-open footer,
+  body.pdf-modal-open aside,
+  body.pdf-modal-open .modal-chrome {
     display: none !important;
   }
 
-  .print-full-width {
+  body.pdf-modal-open #pdf-export-modal {
+    position: static !important;
+    inset: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  body.pdf-modal-open #pdf-modal-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  body.pdf-modal-open #pdf-modal-scroll-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  body.pdf-modal-open #ats-resume-sheet {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
   }
 }
