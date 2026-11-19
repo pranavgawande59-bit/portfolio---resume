@@ -98,7 +98,7 @@ export const AiChatDrawer: React.FC<AiChatDrawerProps> = ({
         text: `### Pranav Gawande — Full-Stack Developer
 - **Core Skills**: React, Next.js, Node.js, Python, Java, SQL, Docker, AWS Cloud
 - **Specialization**: Full-Stack Architecture, Distributed Systems & Cloud Microservices
-- **Education**: Bachelor in Computer Science (SGBAU), Master in Computer Science (G.H Raisoni International Skill Tech University)
+- **Education**: Bachelor in Computer Application (SGBAU), Master in Computer Application (G.H Raisoni International Skill Tech University)
 - **Email**: pranavgawande59@gmail.com`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };

@@ -29,20 +29,20 @@ export const experienceData: ExperienceItem[] = [];
 export const educationData: EducationItem[] = [
   {
     id: 'edu-1',
-    degree: 'Bachelor in Computer Science',
+    degree: 'Bachelor in Computer Application',
     institution: 'Sant Gadge Baba Amravati University, Amravati',
     period: '2023 – 2025',
     description:
       'Comprehensive coursework in Software Engineering, Web Development, Object-Oriented Programming, Database Management Systems, and Data Structures with strong academic distinction.',
     highlights: [
-      'Core Computer Science & Software Engineering',
+      'Core Computer Applications & Software Engineering',
       'Database Management Systems & Object-Oriented Design',
-      'Cumulative CGPA Academic Distinction',
+      'Cumulative Academic Distinction',
     ],
   },
   {
     id: 'edu-2',
-    degree: 'Master in Computer Science',
+    degree: 'Master in Computer Application',
     institution: 'G.H Raisoni international skill tech university, Pune',
     period: '2027',
     description:
