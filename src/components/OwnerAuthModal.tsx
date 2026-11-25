@@ -259,9 +259,6 @@ export const OwnerAuthModal: React.FC<OwnerAuthModalProps> = ({
                 <p className="leading-relaxed text-[#64748b]">
                   After deployment, all profile details, headshot photos, and resume credentials are strictly read-only for public visitors. Only the portfolio owner can make changes.
                 </p>
-                <p className="text-[11px] text-[#0284c7] font-medium pt-0.5">
-                  Default initial owner passcode: <code className="bg-sky-100/80 px-1.5 py-0.5 rounded font-mono text-[#0369a1]">pranav2027</code>
-                </p>
               </div>
             </div>
 
