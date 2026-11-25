@@ -33,6 +33,8 @@ jobs:
         run: npm ci
 
       - name: Build React application
+        env:
+          GITHUB_PAGES: 'true'
         run: npm run build
 
       - name: Verify build output
